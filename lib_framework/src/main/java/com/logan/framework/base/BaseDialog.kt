@@ -32,7 +32,7 @@ import java.util.ArrayList
  * BaseDialog
  */
 class BaseDialog @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     themeResId: Int = R.style.BaseDialogStyle
 ) : AppCompatDialog(context, if (themeResId > 0) themeResId else R.style.BaseDialogStyle),
     DialogInterface.OnShowListener,
@@ -665,7 +665,7 @@ class BaseDialog @JvmOverloads constructor(
         /**
          * 创建对话框对象（子类可以重写此方法来改变 Dialog 类型）
          */
-        protected fun createDialog(context: Context?, themeResId: Int): BaseDialog {
+        protected fun createDialog(context: Context, themeResId: Int): BaseDialog {
             return BaseDialog(context, themeResId)
         }
 

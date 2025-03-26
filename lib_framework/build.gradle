@@ -1,23 +1,24 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk rootProject.android.compileSdk
+    namespace 'com.logan.framework'
+    compileSdk 34
 
     defaultConfig {
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+//        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -31,16 +32,12 @@ android {
         dataBinding = true
         viewBinding = true
     }
-    namespace 'com.logan.framework'
 }
 
 dependencies {
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.depsLibs.coreKtx
-    implementation rootProject.depsLibs.appcompat
-    implementation rootProject.depsLibs.material
-    compileOnly rootProject.depsLibs.gson
+    implementation project(':KUtilKit:android')
+    implementation project(':ALibKit_Google:gson')
+    implementation project(':AWebKit:x5:v44132')
 
-    compileOnly rootProject.depsLibs.refreshLayout
-    compileOnly rootProject.depsLibs.tbssdk
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.1.1'
 }

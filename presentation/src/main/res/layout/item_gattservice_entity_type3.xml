@@ -14,12 +14,11 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:fontFamily="@font/avenir_nexttltpro_regular"
-        android:maxLines="1"
         android:textColor="@color/fontColor"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Name" />
+        tools:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
 
     <TextView
         android:id="@+id/tvSubTitle"

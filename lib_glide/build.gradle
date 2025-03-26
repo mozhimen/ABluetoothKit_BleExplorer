@@ -5,20 +5,20 @@ plugins {
 }
 
 android {
-    compileSdk rootProject.android.compileSdk
+    compileSdk 34
+    namespace 'com.logan.glide'
 
     defaultConfig {
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+//        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -28,18 +28,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.logan.glide'
 }
 
 dependencies {
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.depsLibs.coreKtx
-    implementation rootProject.depsLibs.appcompat
-    implementation rootProject.depsLibs.material
-    implementation rootProject.depsLibs.constraintlayout
+    implementation project(':KUtilKit:android')
+    implementation project(':AImageKit:glide')
+    kapt 'com.github.bumptech.glide:compiler:4.16.0'
 
-    compileOnly rootProject.depsLibs.glide
-    kapt rootProject.depsLibs.glideCompiler
-
-    compileOnly project(path: ':lib_framework')
+    implementation project(':lib_framework')
 }

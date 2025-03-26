@@ -6,7 +6,6 @@ import com.logan.bleexplorer.BuildConfig
 import com.logan.framework.helper.SumAppHelper
 import com.logan.framework.log.LogUtil
 import com.logan.framework.manager.AppManager
-import com.logan.presentation.helper.BleManager
 import com.logan.stater.task.Task
 import com.logan.stater.utils.DispatcherExecutor
 import com.scwang.smart.refresh.footer.ClassicsFooter

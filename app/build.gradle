@@ -21,11 +21,11 @@ android {
     }
 
     namespace rootProject.android.applicationId
-    compileSdk rootProject.android.compileSdk
+    compileSdk 34
 
     defaultConfig {
         applicationId rootProject.android.applicationId
-        minSdk rootProject.android.minSdk
+        minSdk 24
         targetSdk rootProject.android.targetSdk
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
@@ -42,11 +42,11 @@ android {
 //            }
 //        }
         //ARouter
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
@@ -71,6 +71,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 
     //Room官方建议：在`android`块中添加以下代码块，以从软件包中排除原子函数模块并防止出现警告
@@ -80,60 +81,39 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.depsLibs.coreKtx
-    implementation rootProject.depsLibs.appcompat
-    implementation rootProject.depsLibs.material
-    implementation rootProject.depsLibs.constraintlayout
-    implementation rootProject.depsLibs.liveDataKtx
-    implementation rootProject.depsLibs.viewModelKtx
-    implementation rootProject.depsLibs.navigationFragment
-    implementation rootProject.depsLibs.navigationUI
-    implementation rootProject.depsLibs.lifecycleCommon
+    implementation project(':presentation')
+    implementation project(':lib_common')
+    implementation project(':lib_framework')
+    implementation project(':lib_glide')
+    implementation project(':lib_stater')
 
-    implementation rootProject.depsLibs.roomKtx
-    kapt rootProject.depsLibs.roomCompiler
+    implementation project(':ASwiftKit:basick')
+    implementation project(':ALibKit_Jetpack:navigation_common')
+    implementation project(':ALibKit_Jetpack:navigation_fragment')
+    implementation project(':ALibKit_Jetpack:navigation_ui')
+    implementation project(':ALibKit_Jetpack:room')
+    kapt 'androidx.room:room-compiler:2.6.1'
+    implementation project(':ALibKit_Google:gson')
+    implementation project(':ALibKit_Google:exoplayer')
+    implementation project(':ACacheKit:mmkv:v1_2_15')
+    implementation project(':AImageKit:glide')
+    kapt 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation project(':ALibKit_Google:flexbox')
+    implementation project(':AWebKit:x5:v44132')
+    implementation project(':ARxKit:rxpermissions:v0_12')
+    implementation project(':ARxKit:rxjava3')
+    implementation project(':ALibKit_Squareup:retrofit2')
+    implementation project(':ALibKit_Squareup:retrofit2_converter_gson')
+    implementation project(':ALibKit_Squareup:okhttp3_logging_interceptor')
 
-    testImplementation rootProject.depsLibs.junit
-    androidTestImplementation rootProject.depsLibs.extJunit
-    androidTestImplementation rootProject.depsLibs.espressoCore
-
-    implementation rootProject.depsLibs.multidex
-
-    implementation rootProject.depsLibs.retrofit2
-    implementation rootProject.depsLibs.retrofit2Gson
-    implementation rootProject.depsLibs.loggingInterceptor
-
-    implementation rootProject.depsLibs.gson
-
-//    implementation rootProject.depsLibs.xlog
-
-    implementation rootProject.depsLibs.mmkv
-
-    implementation rootProject.depsLibs.refreshLayout
-    implementation rootProject.depsLibs.refreshHeader
-    implementation rootProject.depsLibs.refreshFooter
-
-    implementation rootProject.depsLibs.glide
-    kapt rootProject.depsLibs.glideCompiler
-
-    implementation rootProject.depsLibs.flexbox
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.1.1'
+    implementation 'io.github.scwang90:refresh-header-classics:2.1.1'
+    implementation 'io.github.scwang90:refresh-footer-classics:2.1.1'
 
     implementation rootProject.depsLibs.aroutreApi
     kapt rootProject.depsLibs.arouterCompiler
 
-    implementation rootProject.depsLibs.tbssdk
-    implementation rootProject.depsLibs.exoPlayer
-
-//    implementation rootProject.depsLibs.cameraX
-
-    implementation rootProject.depsLibs.rxPermission
-    implementation rootProject.depsLibs.rxjava
-    implementation rootProject.depsLibs.rxandroid
-
-    implementation project(path: ':presentation')
-    implementation project(path: ':lib_common')
-    implementation project(path: ':lib_framework')
-    implementation project(path: ':lib_glide')
-    implementation project(path: ':lib_stater')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
