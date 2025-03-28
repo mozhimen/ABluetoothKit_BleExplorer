@@ -52,6 +52,8 @@ object BleManager {
     private val isBluetoothEnabled: Boolean
         get() = bluetoothAdapter?.isEnabled == true
 
+    /////////////////////////////////////////////////////////////////////
+
     fun init(application: Application) {
         context = application
     }
