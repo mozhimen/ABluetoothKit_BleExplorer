@@ -211,8 +211,7 @@ object BleManager {
             //Prevent duplicate subscriptions
             return findSubscribeFlow
         } else {
-            val service = getGattService(mac, uuid)
-            service?.getCharacteristic(uuid)?.let { characteristic ->
+            getGattService(mac, uuid)?.getCharacteristic(uuid)?.let { characteristic ->
                 val subscribeFlow = getGattClient(mac)?.subscribeToCharacteristic(characteristic)
                 subscribeFlowMap[mac] = subscribeFlow
                 scope.launch { executeSubscription(mac, subscribeFlow) }
