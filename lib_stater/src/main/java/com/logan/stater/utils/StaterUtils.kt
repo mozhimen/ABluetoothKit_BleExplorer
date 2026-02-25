@@ -1,10 +1,14 @@
 package com.logan.stater.utils
 
+import android.Manifest
 import android.app.ActivityManager
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Process
 import android.text.TextUtils
+import androidx.annotation.RequiresPermission
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.utilk.android.net.UtilKActiveNetworkInfo
 import java.io.BufferedReader
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -18,16 +22,11 @@ object StaterUtils {
         } else processName != null && processName == context.packageName
     }
 
+    @OPermission_ACCESS_NETWORK_STATE
+    @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
     fun isNetworkConnected(context: Context?): Boolean {
         if (context != null) {
-            // 获取手机所有连接管理对象(包括对wi-fi,net等连接的管理)
-            val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            // 获取NetworkInfo对象
-            val networkInfo = manager.activeNetworkInfo
-            //判断NetworkInfo对象是否为空
-            if (networkInfo != null) {
-                return networkInfo.isAvailable
-            }
+            return UtilKActiveNetworkInfo.isAvailable(context)
         }
         return false
     }
