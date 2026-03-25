@@ -18,8 +18,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "BleExplorer"
-include ':app'
-include ':presentation'
+//include ':app'
+//include ':presentation'
 include ':lib_common'
 include ':lib_framework'
 include ':lib_glide'
