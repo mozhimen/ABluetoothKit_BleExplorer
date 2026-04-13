@@ -97,7 +97,7 @@ dependencies {
     implementation project(':ALibKit_Jetpack:navigation_ui')
     implementation project(':ALibKit_Jetpack:room')
     kapt 'androidx.room:room-compiler:2.6.1'
-    implementation project(':ALibKit_Google:gson')
+    implementation 'com.github.mozhimen.ALibKit_Google:gson:0.0.6'
     implementation project(':ALibKit_Google:exoplayer')
     implementation project(':ACacheKit:mmkv:v1_2_15')
     implementation project(':AImageKit:glide')

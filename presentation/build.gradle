@@ -54,7 +54,7 @@ dependencies {
     implementation project(':ALibKit_Jetpack:navigation_fragment')
     implementation project(':ALibKit_Jetpack:navigation_ui')
     implementation project(':ALibKit_Jetpack:bluetooth')
-    implementation project(':ALibKit_Google:gson')
+    implementation 'com.github.mozhimen.ALibKit_Google:gson:0.0.6'
     implementation project(':ALibKit_Google:flexbox')
     implementation project(':ACacheKit:mmkv:v1_2_15')
     implementation project(':AWebKit:x5:v44132')
